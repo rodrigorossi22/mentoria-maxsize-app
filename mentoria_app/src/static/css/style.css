@@ -1,0 +1,457 @@
+/* Paleta de Cores MaxSize (extraída do PDF e logo) */
+:root {
+    --cor-primaria: #1E293B; /* Azul acinzentado escuro (do novo logo) */
+    --cor-secundaria: #F8F9FA; /* Um cinza muito claro, quase branco, para fundos de seção */
+    --cor-destaque: #D9A404; /* Dourado/Amarelo dos detalhes (mantido) */
+    --cor-texto-principal: #333333; /* Preto/Cinza escuro para texto principal */
+    --cor-texto-claro: #FFFFFF;
+    --cor-fundo-pagina: #FFFFFF;
+    --cor-bordas: #DEE2E6; /* Cinza claro para bordas */
+    --cor-header-fundo: #000000; /* Preto para o fundo do header, conforme logo */
+    --cor-header-texto: #FFFFFF;
+    --cor-nav-fundo: #E9ECEF; /* Cinza um pouco mais escuro para a navegação */
+    --cor-nav-texto: var(--cor-primaria);
+    --cor-nav-hover-texto: var(--cor-destaque);
+    --cor-nav-hover-borda: var(--cor-destaque);
+    --cor-botao-primario-fundo: var(--cor-primaria);
+    --cor-botao-primario-texto: var(--cor-texto-claro);
+    --cor-botao-hover-fundo: var(--cor-destaque);
+    --cor-botao-hover-texto: var(--cor-primaria);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-principal);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header {
+    background-color: var(--cor-header-fundo);
+    color: var(--cor-header-texto);
+    padding: 15px 0; /* Padding vertical, horizontal via .container */
+    text-align: center;
+    border-bottom: 3px solid var(--cor-destaque);
+}
+
+header .container {
+    display: flex;
+    flex-direction: column; /* Empilha logo e título em telas menores */
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px; /* Espaço extra no container do header */
+}
+
+header #logo {
+    max-height: 80px; /* Aumenta um pouco o tamanho da logo */
+    margin-bottom: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em; /* Ajusta o tamanho do título */
+    font-weight: 300; /* Fonte mais leve para o título */
+}
+
+nav#session-nav {
+    background-color: var(--cor-nav-fundo);
+    padding: 0;
+    border-bottom: 1px solid var(--cor-bordas);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Para manter a navegação no topo ao rolar */
+}
+
+nav#session-nav .container {
+    padding: 0; /* Remove padding do container da nav para ocupar largura total */
+}
+
+nav#session-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+}
+
+nav#session-nav ul li {
+    margin: 0;
+}
+
+nav#session-nav ul li a {
+    text-decoration: none;
+    color: var(--cor-nav-texto);
+    font-weight: 500;
+    padding: 15px 20px;
+    display: block;
+    transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+}
+
+nav#session-nav ul li a:hover,
+nav#session-nav ul li a.active-link {
+    color: var(--cor-nav-hover-texto);
+    background-color: rgba(0,0,0,0.05); /* Leve escurecimento no hover */
+    border-bottom-color: var(--cor-nav-hover-borda);
+}
+
+main#session-content {
+    padding-top: 20px;
+}
+
+.session-form-container {
+    display: none;
+    padding: 25px;
+    border: 1px solid var(--cor-bordas);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    background-color: var(--cor-fundo-pagina);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.session-form-container.active-session {
+    display: block;
+}
+
+.session-form-container h2, 
+section#mentorado-info h2, 
+section#general-fields h3, 
+.session-form-container h3,
+section#general-fields h4 {
+    color: var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-destaque);
+    padding-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+section#mentorado-info, section#general-fields {
+    padding: 25px;
+    border: 1px solid var(--cor-bordas);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    background-color: var(--cor-secundaria);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--cor-texto-principal);
+    font-size: 0.95em;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%; 
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-bordas);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(30, 41, 59, 0.2); /* Sombra sutil no foco */
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+table th, table td {
+    border: 1px solid var(--cor-bordas);
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+table th {
+    background-color: var(--cor-nav-fundo);
+    color: var(--cor-primaria);
+    font-weight: 600;
+}
+
+table input[type="number"] {
+    width: 70px;
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 0; /* Remove margem inferior dentro da tabela */
+}
+
+table input[type="file"] {
+    font-size: 0.9em;
+}
+
+table img {
+    max-width: 60px;
+    max-height: 60px;
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+button, input[type="submit"] {
+    background-color: var(--cor-botao-primario-fundo);
+    color: var(--cor-botao-primario-texto);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+    margin-right: 10px; /* Espaço entre botões */
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: var(--cor-botao-hover-fundo);
+    color: var(--cor-botao-hover-texto);
+    transform: translateY(-1px);
+}
+
+button.delete-caso-clinico, button.delete-duvida {
+    background-color: #DC3545; /* Vermelho para exclusão */
+}
+button.delete-caso-clinico:hover, button.delete-duvida:hover {
+    background-color: #C82333;
+    color: var(--cor-texto-claro);
+}
+
+.duvida-item {
+    border: 1px solid var(--cor-bordas);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: var(--cor-secundaria);
+}
+
+.duvida-item textarea {
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 2em 0;
+    background-color: var(--cor-header-fundo);
+    color: var(--cor-header-texto);
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (min-width: 769px) {
+    header .container {
+        flex-direction: row; /* Logo e título lado a lado em telas maiores */
+        justify-content: flex-start; /* Alinha à esquerda */
+    }
+    header #logo {
+        margin-bottom: 0;
+        margin-right: 25px;
+    }
+    header h1 {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    nav#session-nav ul li a {
+        padding: 12px 10px;
+        font-size: 0.9em;
+    }
+    .container {
+        width: 95%;
+    }
+    button, input[type="submit"] {
+        padding: 10px 18px;
+        font-size: 0.95em;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid var(--cor-bordas); margin-bottom:10px; }
+	
+	td {
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+        white-space: normal;
+        text-align: left;
+	}
+	
+td:before {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+	}
+
+    /* Rótulos para as células da tabela de Casos Clínicos */
+    #inicial-casos-clinicos-table td:nth-of-type(1):before { content: "Nome Paciente"; }
+    #inicial-casos-clinicos-table td:nth-of-type(2):before { content: "Idade"; }
+    #inicial-casos-clinicos-table td:nth-of-type(3):before { content: "Procedimento"; }
+    #inicial-casos-clinicos-table td:nth-of-type(4):before { content: "Material"; }
+    #inicial-casos-clinicos-table td:nth-of-type(5):before { content: "Volume"; }
+    #inicial-casos-clinicos-table td:nth-of-type(6):before { content: "Técnica"; }
+    #inicial-casos-clinicos-table td:nth-of-type(7):before { content: "Foto Antes"; }
+    #inicial-casos-clinicos-table td:nth-of-type(8):before { content: "Foto Depois"; }
+    #inicial-casos-clinicos-table td:nth-of-type(9):before { content: "Ações"; }
+
+    /* Repetir para as outras tabelas de casos clínicos (sessao1, sessao2, etc.) */
+    #sessao1-casos-clinicos-table td:nth-of-type(1):before { content: "Nome Paciente"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(2):before { content: "Idade"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(3):before { content: "Procedimento"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(4):before { content: "Material"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(5):before { content: "Volume"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(6):before { content: "Técnica"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(7):before { content: "Foto Antes"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(8):before { content: "Foto Depois"; }
+    #sessao1-casos-clinicos-table td:nth-of-type(9):before { content: "Ações"; }
+
+    /* Adicionar para sessao2 a sessao6 de forma similar */
+    #sessao2-casos-clinicos-table td:nth-of-type(1):before { content: "Nome Paciente"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(2):before { content: "Idade"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(3):before { content: "Procedimento"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(4):before { content: "Material"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(5):before { content: "Volume"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(6):before { content: "Técnica"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(7):before { content: "Foto Antes"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(8):before { content: "Foto Depois"; }
+    #sessao2-casos-clinicos-table td:nth-of-type(9):before { content: "Ações"; }
+
+    #sessao3-casos-clinicos-table td:nth-of-type(1):before { content: "Nome Paciente"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(2):before { content: "Idade"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(3):before { content: "Procedimento"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(4):before { content: "Material"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(5):before { content: "Volume"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(6):before { content: "Técnica"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(7):before { content: "Foto Antes"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(8):before { content: "Foto Depois"; }
+    #sessao3-casos-clinicos-table td:nth-of-type(9):before { content: "Ações"; }
+
+    #sessao4-casos-clinicos-table td:nth-of-type(1):before { content: "Nome Paciente"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(2):before { content: "Idade"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(3):before { content: "Procedimento"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(4):before { content: "Material"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(5):before { content: "Volume"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(6):before { content: "Técnica"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(7):before { content: "Foto Antes"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(8):before { content: "Foto Depois"; }
+    #sessao4-casos-clinicos-table td:nth-of-type(9):before { content: "Ações"; }
+
+    #sessao5-casos-clinicos-table td:nth-of-type(1):before { content: "Nome Paciente"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(2):before { content: "Idade"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(3):before { content: "Procedimento"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(4):before { content: "Material"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(5):before { content: "Volume"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(6):before { content: "Técnica"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(7):before { content: "Foto Antes"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(8):before { content: "Foto Depois"; }
+    #sessao5-casos-clinicos-table td:nth-of-type(9):before { content: "Ações"; }
+
+    #sessao6-casos-clinicos-table td:nth-of-type(1):before { content: "Nome Paciente"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(2):before { content: "Idade"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(3):before { content: "Procedimento"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(4):before { content: "Material"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(5):before { content: "Volume"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(6):before { content: "Técnica"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(7):before { content: "Foto Antes"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(8):before { content: "Foto Depois"; }
+    #sessao6-casos-clinicos-table td:nth-of-type(9):before { content: "Ações"; }
+
+    /* Tabela de Habilidades */
+    #habilidades-table td:nth-of-type(1):before { content: "Habilidade"; }
+    #habilidades-table td:nth-of-type(2):before { content: "Inicial"; }
+    #habilidades-table td:nth-of-type(3):before { content: "Sessão 1"; }
+    #habilidades-table td:nth-of-type(4):before { content: "Sessão 2"; }
+    #habilidades-table td:nth-of-type(5):before { content: "Sessão 3"; }
+    #habilidades-table td:nth-of-type(6):before { content: "Sessão 4"; }
+    #habilidades-table td:nth-of-type(7):before { content: "Sessão 5"; }
+    #habilidades-table td:nth-of-type(8):before { content: "Sessão 6"; }
+
+    td input[type="file"] {
+        width: calc(100% - 10px); /* Ajuste para inputs de arquivo na tabela responsiva */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    header #logo {
+        max-height: 60px;
+    }
+    header h1 {
+        font-size: 1.3em;
+    }
+    nav#session-nav ul li a {
+        padding: 10px 8px;
+        font-size: 0.85em;
+    }
+    .session-form-container h2, 
+    section#mentorado-info h2, 
+    section#general-fields h3, 
+    .session-form-container h3,
+    section#general-fields h4 {
+        font-size: 1.3em;
+    }
+    td:before {
+        top: 10px;
+        left: 10px;
+    }
+}
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Acompanhamento de Mentoria MaxSize</title    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>    <header>
+    <img src="{{ url_for('static', filename='img/nova_maxsize_logo.jpg') }}" alt="MaxSize Logo Dr. Deangelo Lima" id="logo">
+    <h1>Ficha de Acompanhamento Trimestral - Mentoria VIP</h1>
+</header>
+
+    <section id="mentorado-info" class="container">
+        <h2>Dados do Mentorado</h2>
+        <form id="form-mentorado-details">
+            <div>
+                <label for="mentorado-nome">Nome:</label>
+                <input type="text" id="mentorado-nome" name="nome">
+            </div>
+            <div>
+                <label for="mentorado-especialidade">Especialidade:</label>
+                <input type="text" id="mentorado-especialidade" name="especialidade">
+            </div>
+            <div>
+                <label for="mentorado-data-inicio">Data de Início da Mentoria:</label>
+                <input type="date" id="mentorado-data-inicio" name="data_inicio_mentoria">
+            </div>
+            <button type="button" id="save-mentorado-details">Salvar Dados do Mentorado</button>
+        </form>
+    </section>
+
+    <nav id="session-nav">
+        <ul>
+            <li><a href="#" data-session="inicial">Sessão Inicial</a></li>
+            <li><a href="#" data-session="sessao1">Sessão 1</a></li>
+            <li><a href="#" data-session="sessao2">Sessão 2</a></li>
+            <li><a href="#" data-session="sessao3">Sessão 3</a></li>
+            <li><a href="#" data-session="sessao4">Sessão 4</a></li>
+            <li><a href="#" data-session="sessao5">Sessão 5</a></li>
+            <li><a href="#" data-session="sessao6">Sessão 6</a></li>
+        </ul>
+    </nav>
+
+    <main id="session-content" class="container">
+        <!-- Conteúdo da sessão será carregado aqui por JavaScript -->
+        <!-- Estrutura de Exemplo para UMA sessão (será similar para todas) -->
+        <div class="session-form-container active-session" id="inicial-content" data-session-name="Inicial">
+            <h2>Sessão Inicial</h2>
+            <form class="session-form">
+                <input type="hidden" name="session_id" value="">
+                <div><label for="inicial-data-sessao">Data da Sessão:</label><input type="date" id="inicial-data-sessao" name="data_sessao"></div>
+                
+                <section class="casos-clinicos-section">
+                    <h3>Casos Clínicos Realizados</h3>
+                    <table id="inicial-casos-clinicos-table">
+                        <thead>
+                            <tr>
+                                <th>Nome do Paciente</th>
+                                <th>Idade</th>
+                                <th>Procedimento</th>
+                                <th>Material Utilizado</th>
+                                <th>Volume Aplicado</th>
+                                <th>Técnica</th>
+                                <th>Foto Antes</th>
+                                <th>Foto Depois</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inicial-casos-clinicos-tbody">
+                            <!-- Linhas de casos clínicos serão adicionadas aqui -->
+                        </tbody>
+                    </table>
+                    <button type="button" class="add-caso-clinico">Adicionar Caso Clínico</button>
+                </section>
+
+                <section>
+                    <h3>Resultados Observados</h3>
+                    <div><label for="inicial-resultados-imediatos">Imediatos:</label><textarea id="inicial-resultados-imediatos" name="resultados_observados_imediatos"></textarea></div>
+                    <div><label for="inicial-resultados-7dias">Após 7 dias:</label><textarea id="inicial-resultados-7dias" name="resultados_observados_apos_7_dias"></textarea></div>
+                </section>
+
+                <section>
+                    <h3>Complicações Encontradas</h3>
+                    <div><label for="inicial-complicacoes-descricao">Descrição:</label><textarea id="inicial-complicacoes-descricao" name="complicacoes_descricao"></textarea></div>
+                    <div><label for="inicial-complicacoes-manejo">Manejo realizado:</label><textarea id="inicial-complicacoes-manejo" name="complicacoes_manejo_realizado"></textarea></div>
+                    <div><label for="inicial-complicacoes-resultado">Resultado do manejo:</label><textarea id="inicial-complicacoes-resultado" name="complicacoes_resultado_manejo"></textarea></div>
+                </section>
+
+                <section class="duvidas-discussao-section">
+                    <h3>Dúvidas para Discussão</h3>
+                    <div id="inicial-duvidas-container">
+                        <!-- Dúvidas serão adicionadas aqui -->
+                    </div>
+                    <button type="button" class="add-duvida">Adicionar Dúvida</button>
+                </section>
+
+                <section>
+                    <h3>Feedback do Mentor</h3>
+                    <div><label for="inicial-feedback-mentor">Feedback:</label><textarea id="inicial-feedback-mentor" name="feedback_mentor"></textarea></div>
+                </section>
+                <button type="button" class="save-session-data">Salvar Dados da Sessão</button>
+            </form>
+        </div>
+
+        <!-- Placeholders para outras sessões (estrutura similar à acima) -->
+        <div class="session-form-container" id="sessao1-content" data-session-name="Sessão 1"><h2>Sessão 1</h2><form class="session-form"><!-- Conteúdo similar ao da Sessão Inicial --></form></div>
+        <div class="session-form-container" id="sessao2-content" data-session-name="Sessão 2"><h2>Sessão 2</h2><form class="session-form"><!-- ... --></form></div>
+        <div class="session-form-container" id="sessao3-content" data-session-name="Sessão 3"><h2>Sessão 3</h2><form class="session-form"><!-- ... --></form></div>
+        <div class="session-form-container" id="sessao4-content" data-session-name="Sessão 4"><h2>Sessão 4</h2><form class="session-form"><!-- ... --></form></div>
+        <div class="session-form-container" id="sessao5-content" data-session-name="Sessão 5"><h2>Sessão 5</h2><form class="session-form"><!-- ... --></form></div>
+        <div class="session-form-container" id="sessao6-content" data-session-name="Sessão 6"><h2>Sessão 6</h2><form class="session-form"><!-- ... --></form></div>
+
+        <section id="general-fields" class="container">
+            <h3>Campos Gerais (Atualizados ao Longo da Mentoria)</h3>
+            <form id="form-general-fields">
+                <h4>Desenvolvimento de Habilidades (1-Iniciante, 5-Proficiente)</h4>
+                <table id="habilidades-table">
+                    <thead>
+                        <tr>
+                            <th>Habilidade</th>
+                            <!-- Colunas de sessão serão geradas por JS -->
+                        </tr>
+                    </thead>
+                    <tbody id="habilidades-tbody">
+                        <!-- Linhas de habilidades e inputs serão preenchidas via JS -->
+                    </tbody>
+                </table>
+
+                <div>
+                    <label for="meta-proximo-mes">META PARA O PRÓXIMO MÊS:</label>
+                    <textarea id="meta-proximo-mes" name="meta_proximo_mes"></textarea>
+                </div>
+                <div>
+                    <label for="pontos-melhorar">PONTOS A MELHORAR:</label>
+                    <textarea id="pontos-melhorar" name="pontos_melhorar"></textarea>
+                </div>
+                <div>
+                    <label for="estrategias-mentor">ESTRATÉGIAS SUGERIDAS PELO MENTOR:</label>
+                    <textarea id="estrategias-mentor" name="estrategias_mentor"></textarea>
+                </div>
+                <div>
+                    <label for="anotacoes-adicionais">ANOTAÇÕES ADICIONAIS:</label>
+                    <textarea id="anotacoes-adicionais" name="anotacoes_adicionais"></textarea>
+                </div>
+                <button type="button" id="save-general-fields">Salvar Campos Gerais</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MaxSize Mentoria. Todos os direitos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

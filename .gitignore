@@ -1,0 +1,11 @@
+# Ambientes Virtuais
+venv/
+*.pyc
+__pycache__/
+.env
+
+# Arquivos de IDEs e SO
+.vscode/
+.idea/
+.DS_Store
+*.swp
